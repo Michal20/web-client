@@ -35,19 +35,27 @@
 </body>
 </html>
 <script lang="javascript">
+    var list_of_users= {
+        "Ross": "Ross Geller",
+        "Monica": "Monica Geller",
+        "Chandler": "Chandler Bing",
+        "Rachel": "Rachel Green",
+        "Joey": "Joey Tribbiany",
+        "Phobe": "Phobe Buffay"
+    };
     function enterUser() {
         const userName = document.getElementById("user-name").value;
-        const password = document.getElementById("pwde").value;
+        const password = document.getElementById("pwd").value;
         if (typeof userName !== "string") {
-            alert("Invalid Username input. we only process strings.");
+            alert("Invalid Username input. We only process strings.");
             return;
         }
         if(userName == "" || userName == undefined) {
-            alert("Invalid input. Pleas enter username");
+            alert("Invalid input. Please enter username");
             return
         }
         if(userName.length < 4) {
-            alert("Invalid input. The username 4 character or longer.");
+            alert("Invalid input. The username needs to contain at least four characters.");
             return
         }
         if (typeof password !== "string") {
@@ -55,14 +63,22 @@
             return;
         }
         if(password == "" || password == undefined) {
-            alert("Invalid input. Pleas enter password");
+            alert("Invalid input. Please enter password");
             return
         }
         if(password.length < 8) {
-            alert("Invalid input. Thepassword 8 character or longer.");
+            alert("Invalid input. The password needs to contain at least eight character or longer.");
             return
         }
-
+        if(list_of_users[userName] == null) {
+            alert("Invalid input. Username does not exists")
+        }
+        if(list_of_users[userName] != password) {
+            alert("Invalid input. Password does not match username")
+        }
+        else {
+            alert("Hello " + userName + (" , welcome to Superchat"))
+        }
     }
    
 </script>
