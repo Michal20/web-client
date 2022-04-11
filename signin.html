@@ -22,7 +22,7 @@
             </div>
             <hr>
             <div class="form-group col-sm-12">
-                <button type="submit" onclick="enterUser()" class="form-control btn btn-primary fw-bold">Submit</button>          
+                <button type="submit" onclick="enterUser()" class="form-control btn btn-primary fw-bold">Submit</button>
             </div>
             
             <hr>
@@ -77,6 +77,7 @@
             alert("Invalid input. Password does not match username")
         }
         else {
+            window.location.href = "chat.html";
             alert("Hello " + userName + (" , welcome to Superchat"))
         }
     }
