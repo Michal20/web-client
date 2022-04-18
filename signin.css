@@ -12,7 +12,7 @@ body{
 }
 .container{
     max-width: 650px;
-    margin: 50px auto;
+    margin:8% auto;
 }
 
 .container .box-register {
@@ -88,9 +88,7 @@ body{
     left: 0px;
     color: #ddd;
 }
-.form-control.section-input.error small{
-    visibility: visible;
-}
+
 .container .box-register .btn-primary {
     background: linear-gradient(135deg, #71b7e6, #9b59b6);
     border-color: #eee;

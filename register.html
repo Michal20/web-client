@@ -1,80 +1,82 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <title>Register Form</title>
     <link href="register.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4f00ee1694.js" crossorigin="anonymous"></script>
+    <script defer src="./register.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Sign Up</h1>
-        <p>Please fill in this form to create an account.</p>
-        <form class="form-horizontal" action="/action_page.php">
-            <div class="form-group col">
-                <label class="control-label fw-bold" for="user-name">Username:</label>
-                <input type="text" class="form-control bg-light" id="user-name" placeholder="Enter username" required>
+        <div class="box-register">
+            <div class="box-title">
+                <h1 class="fw-bold">Sign Up</h1>
+                <p>Please fill in this form to create an account.</p>
             </div>
             
-            <div class="form-group col-sm-12">
-                <label class="control-label fw-bold" for="pwd">Password:</label>
-                <input type="password" class="form-control bg-light" id="pwd" placeholder="Enter password" required>
-            </div>
+            <form class="form d-flex flex-column" id="form" action="chat.html">
+                <div class="form-control section-input">
+                    <div class="d-flex align-items-center input-field my-3 mb-0">
+                        <span class="far fa-user p-2"></span>
+                        <input type="text" class="form-control bg-light" id="user-name" placeholder="Enter username">
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control section-input">
+                    <div class="d-flex align-items-center input-field mb-0">
+                        <span class="far fa-user p-2"></span>
+                        <input type="text" class="form-control bg-light" id="nickname" placeholder="Enter nickname">
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <small>Error message</small>
+                </div>
 
-            <div class="form-group col-sm-12">
-                <label class="control-label fw-bold" for="repeat-pwd">Repeat Password:</label>        
-                <input type="password" class="form-control bg-light" id="repeat-pwd" placeholder="Repeat Password" required>
-            </div>
-
-            <hr>
-            <div class="form-group col-sm-12">
-                <button type="submit" onclick="addUser()" class="form-control btn btn-primary fw-bold">Submit</button>          
-            </div>
-            
-            <br>
-            <div class="text-center">
-                <p>Already have an account? <a href="signin.html">Sign in</a></p>
-            </div>
-        </form>
+                <div class="form-control section-input">
+                    <div class="d-flex align-items-center input-field mb-0"> 
+                        <span class="fas fa-lock p-2"></span>
+                        <input type="password" class="form-control bg-light" id="pwd" placeholder="Enter password">
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <small>Error message</small>
+                </div>
+                
+                <div class="form-control section-input">
+                    <div class="d-flex align-items-center input-field mb-0"> 
+                        <span class="bi bi-lock p-2" width="1000"></span>
+                        <input type="password" class="form-control bg-light" id="repeat-pwd" placeholder="Repeat Password">
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control section-input">
+                    <div class="d-flex align-items-center input-field mb-0">
+                        <span class="far fa-image p-2"></span>
+                        <input type="file" class="form-control bg-light" id="image" placeholder="Enter nickname">
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <small>Error message</small>
+                </div>
+                <div class="my-3"> 
+                    <button type="submit" class="form-control btn btn-primary fw-bold">Submit</button>
+                </div>
+                <div class="mb-3 have-account"> 
+                    <span class="text-light-white">Already have an account?</span> 
+                    <a href="signin.html">Sign In</a> 
+                </div>
+            </form>
+        </div>
     </div>
+
 </body>
 </html>
-<script lang="javascript">
-    function addUser() {
-        const userName = document.getElementById("user-name").value;
-        const password = document.getElementById("pwd").value;
-        const repearPwd = document.getElementById("repeat-pwd").value;
-        
-        if(password != repearPwd) {
-            alert("Invalid input. Your passwords don't match. Please retype your password to confirm it.");
-            return;
-        }
-        if (typeof userName !== "string") {
-            alert("Invalid Username input. we only process strings.");
-            return;
-        }
-        if(userName == "" || userName == undefined) {
-            alert("Invalid input. Please enter username");
-            return
-        }
-        if(userName.length < 4) {
-            alert("Invalid input. The username must contain at least four characters.");
-            return
-        }
-        if (typeof password !== "string") {
-            alert("Invalid password input. we only process strings.");
-            return;
-        }
-        if(password == "" || password == undefined) {
-            alert("Invalid input. Please enter password");
-            return
-        }
-        if(password.length < 8) {
-            alert("Invalid input. The password must contain eight characters.");
-            return
-        }
 
-    }
-   
-</script>
