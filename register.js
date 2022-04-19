@@ -21,40 +21,40 @@ function validation() {
     const nicknameValue = nickname.value.trim();
     if(userNameValue == "" || userNameValue == undefined) {
         isvalid = false;
-        setError(userName, 'Pleas enter username');
+        setError(userName, 'Please enter username');
 
     }else if(typeof userNameValue != "string") {
         isvalid = false;
-        setError(userName, 'We only process strings');
+        setError(userName, 'Username has to be a string');
     } else if (userNameValue.length < 4) {
         isvalid = false;
-        setError(userName,'Username cannot be shorter then 4 character');
+        setError(userName,'Username must contain at least four characters');
     } else {
         setSuccess(userName);
     }
     if(nicknameValue == "" || nicknameValue == undefined) {
         isvalid = false;
-        setError(nickname, 'Pleas enter nickname');
+        setError(nickname, 'Please enter nickname');
 
     }else if(typeof nicknameValue != "string") {
         isvalid = false;
-        setError(nickname, 'We only process strings');
+        setError(nickname, 'Nickname has to be a string');
     } else if (nicknameValue.length < 4) {
         isvalid = false;
-        setError(nickname,'Nickname cannot be shorter then 4 character');
+        setError(nickname,'Nickname must contain at least four characters');
     } else {
         setSuccess(nickname);
     }
 
     if(passwordValue == "" || passwordValue == undefined) {
         isvalid = false;
-        setError(password,'Pleas enter password');
+        setError(password,'Please enter password');
     }else if(passwordValue != repeatPwdValue) {
         isvalid = false;
         setError(repeatPwd,'Your passwords dont match');
     } else if(repeatPwdValue.length < 8) {
         isvalid = false;
-        setError(repeatPwd,'Password cannot be shorter then 8 character');
+        setError(repeatPwd,'Password must contain at least eight characters');
     } else if(!(/[a-zA-Z]/.test(repeatPwdValue))) {
         isvalid = false;
         setError(repeatPwd,'Password must contain at least one letter');
@@ -67,7 +67,7 @@ function validation() {
 
     if(repeatPwdValue == "" || repeatPwdValue == undefined) {
         isvalid = false;
-        setError(repeatPwd,'Pleas enter password again');
+        setError(repeatPwd,'Please enter password again');
     } else if (typeof passwordValue != "string") {
         isvalid = false;
         setError(password, 'we only process strings');
@@ -76,7 +76,7 @@ function validation() {
         setError(repeatPwd, 'we only process strings');
     } else if(passwordValue.length < 8) {
         isvalid = false;
-        setError(password,'Password cannot be shorter then 8 character');
+        setError(password,'Password must contain at least eight characters');
     } else if(!(/[a-zA-Z]/.test(passwordValue))) {
         isvalid = false;
         setError(password,'Password must contain at least one letter');
