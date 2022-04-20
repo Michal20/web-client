@@ -1,64 +1,109 @@
-.container{max-width:1170px; margin:auto;}
-img{ max-width:100%;}
-.inbox_people {
-  background: #c2d6e6 none repeat scroll 0 0;
-  float: left;
-  overflow: hidden;
-  width: 40%; border-right:1px solid #582020;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif
 }
+html {
+  scroll-behavior: smooth;
+}
+body{
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.container{ 
+  margin: 50px auto;
+  max-width:1170px;
+}
+img{ max-width:100%;}
 .inbox_msg {
-  border: 1px solid #681426;
+  border: 5px solid rgba(239, 235, 235, 0.5);
+  border-radius: 15px;
   clear: both;
   overflow: hidden;
 }
-.top_spac{ margin: 20px 0 0;}
-
-
-.recent_heading {float: left; width:40%;}
-.srch_bar {
-  display: inline-block;
-  text-align: right;
-  width: 60%;
+.inbox_people {
+  background: #adcee0 none repeat scroll 0 0;
+  float: left;
+  overflow: hidden;
+  width: 40%; 
+  border-right:5px solid rgba(239, 235, 235, 0.5);
 }
-.headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #748891;}
 
+.headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid rgba(239, 235, 235, 0.5);}
+.recent_heading {float: left; width:40%;}
 .recent_heading h4 {
-  color: #778386;
+  color: #746ec6;
   font-size: 21px;
   margin: auto;
 }
-.srch_bar input{ border:1px solid #d6cf6a; border-width:0 0 1px 0; width:80%; padding:2px 0 4px 6px; background:none;}
-.srch_bar .input-group-addon button {
-  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-  border: medium none;
-  padding: 0;
-  color: #707070;
-  font-size: 18px;
-}
-.srch_bar .input-group-addon { margin: 0 0 0 -27px;}
 
-.chat_ib h5{ font-size:15px; color:#a7626d; margin:0 0 8px 0;}
-.chat_ib h5 span{ font-size:13px; float:right;}
-.chat_ib p{ font-size:14px; color:#29302f; margin:auto}
+.chat_list {
+  border: none;
+  border: 2px solid rgba(239, 235, 235, 0.5);
+  margin: 0;
+  padding: 18px 16px 10px;
+  width: 100%;
+  color: #746ec6;
+  background: #adcee0 none repeat scroll 0 0;
+}
+#active_chat{ 
+  background:#544f68;
+  border-bottom: 2px solid rgba(239, 235, 235, 0.5);
+}
 .chat_img {
-  float: left;
-  width: 11%;
+  float:left;
+  width: 15%;
+}
+.chat_img img{
+  border-radius:50%;
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
 }
 .chat_ib {
   float: left;
   padding: 0 0 0 15px;
-  width: 88%;
+  width: 85%;
+}
+.user_chat_name{
+  float: left;
+  color:#c0b8ba;
+  font-size:18px;
+  margin:0 0 8px 0;
+}
+.user_chat_date{
+  color:#d9ced0;
+  font-size:14px;
+  margin:0 0 8px 0;
+  float:right;
+}
+.user_chat_message{
+  color:#29302f;
+  font-size:14px;
+  margin:auto;
+  float: left;
+}
+.chat_ib h5{  color:#f7f3f4; }
+.chat_ib h5 span{ font-size:13px; float:right;}
+.chat_ib p{ font-size:14px; color:#29302f; margin:auto}
+.chat_ib img {
+  float: left;
+  width: 11%;
 }
 
 .chat_people{ overflow:hidden; clear:both;}
-.chat_list {
-  border-bottom: 1px solid #9e0d03;
-  margin: 0;
-  padding: 18px 16px 10px;
-}
+
 .inbox_chat { height: 550px; overflow-y: scroll;}
 
-.active_chat{ background:#544f68;}
+.mesgs {
+  float: left;
+  padding: 30px 15px 0 25px;
+  width: 60%;
+}
+.msg_history {
+  height: 490px;
+  overflow-y: auto;
+}
 
 .incoming_msg_img {
   display: inline-block;
@@ -66,14 +111,14 @@ img{ max-width:100%;}
 }
 .received_msg {
   display: inline-block;
-  padding: 0 0 0 10px;
+  padding: 0 0 0 5px;
   vertical-align: top;
   width: 92%;
  }
  .received_withd_msg p {
-  background: #ebebeb none repeat scroll 0 0;
-  border-radius: 3px;
-  color: #b547e0;
+  background: #88d4dc none repeat scroll 0 0;
+  border-radius: 5px;
+  color: #5e13ea;
   font-size: 14px;
   margin: 0;
   padding: 5px 10px 5px 12px;
@@ -83,53 +128,91 @@ img{ max-width:100%;}
   color: #0000002d;
   display: block;
   font-size: 12px;
-  margin: 8px 0 0;
+  margin: 5px 0 0;
 }
 .received_withd_msg { width: 57%;}
-.mesgs {
-  float: left;
-  padding: 30px 15px 0 25px;
-  width: 60%;
-}
-
- .sent_msg p {
-  background: #831b31 none repeat scroll 0 0;
+.sent_msg p {
+  background: #7ccab5 none repeat scroll 0 0;
   border-radius: 3px;
   font-size: 14px;
   margin: 0; color:rgb(160, 99, 7);
   padding: 5px 10px 5px 12px;
   width:100%;
 }
-.outgoing_msg{ overflow:hidden; margin:26px 0 26px;}
+.outgoing_msg{ overflow:hidden; margin:10px 0 10px;}
 .sent_msg {
   float: right;
-  width: 46%;
-}
-.input_msg_write input {
-  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-  border: medium none;
-  color: #4c4c4c;
-  font-size: 15px;
-  min-height: 48px;
-  width: 100%;
+  width: 56%;
 }
 
 .type_msg {border-top: 1px solid #4412a0;position: relative;}
+.input_msg_write input {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: none;
+  color: #4c4c4c;
+  font-size: 15px;
+  min-height: 40px;
+  width: 90%;
+}
+#Ross_Geller {
+  display: block;
+}
+#Monica_Geller {
+  display:none;
+}
+#Chandler_Bing {
+  display:none;
+}
+#Rachel_Green {
+  display:none;
+}
+#Joey_Tribbiany {
+  display:none;
+}
+#Phobe_Buffay {
+  display:none;
+}
+.files_msg {
+  visibility:hidden;
+}
+.msg_file_btn{
+  background-color: #48474a;
+  border:none;
+}
+.add_file_btn {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  color: aqua;  
+  border:none;
+}
 .msg_send_btn {
-  background: #05728f none repeat scroll 0 0;
-  border: medium none;
-  border-radius: 50%;
-  color: rgb(56, 75, 62);
-  cursor: pointer;
-  font-size: 17px;
-  height: 33px;
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  color: aqua;  
+  border:none;
+  height: 40px;
   position: absolute;
   right: 0;
-  top: 11px;
-  width: 33px;
+  width: 50px;
 }
 .messaging { padding: 0 0 50px 0;}
-.msg_history {
-  height: 516px;
-  overflow-y: auto;
+
+
+
+/*
+.icon_send{
+  border: none;
 }
+.top_spac{ margin: 20px 0 0;}
+.srch_bar {
+  display: inline-block;
+  text-align: right;
+  width: 60%;
+}
+.srch_bar input{ border:1px solid #d6cf6a; border-width:0 0 1px 0; width:80%; padding:2px 0 4px 6px; background:none;}
+.srch_bar .input-group-addon button {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  padding: 0;
+  color: #707070;
+  font-size: 18px;
+}
+.srch_bar .input-group-addon { margin: 0 0 0 -27px;}*/

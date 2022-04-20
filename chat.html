@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <title>Chat Form</title>
+  <script src="https://kit.fontawesome.com/4f00ee1694.js" crossorigin="anonymous"></script>
   <link href="chat.css" rel="stylesheet">
 </head>
-
 <body>
   <div class="container">
     <h3 class=" text-center">Chatting in Superchat</h3>
@@ -18,62 +17,92 @@
         <div class="inbox_people">
           <div class="headind_srch">
             <div class="recent_heading">
-              <h4>Recent</h4>
+              <h4 class="fw-bold">Recent</h4>
             </div>
           </div>
           <div class="inbox_chat">
-            <div class="chat_list active_chat">
+            <button class="chat_list" id="active_chat" onclick="chatWith(this, 'Ross_Geller')" type="button">
               <div class="chat_people">
-                <div class="chat_ib">
-                  <h5>Ross Geller <span class="chat_date">Apr 9, 19:43</span></h5>
-                  <p>Hi, how are you?</p>
-                </div>
+                <span class="chat_img">
+                  <img src="download (2).jpg" alt="avatar.png">
+                </span>
+                <span class="chat_ib">
+                  <span class="fw-bold user_chat_name">Ross Geller</span>
+                  <span class="user_chat_date"></span>
+                  <br>
+                  <p class="user_chat_message"></p>
+                </span>
               </div>
-            </div>
-            <div class="chat_list">
+            </button>
+            <button class="chat_list" onclick="chatWith(this, 'Rachel_Green')" type="button">
               <div class="chat_people">
-                <div class="chat_ib">
-                  <h5>Rachel Green <span class="chat_date">Apr 6, 08:15</span></h5>
-                  <p>Be right back</p>
-                </div>
+                <span class="chat_img">
+                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_02.jpg" alt="avatar.png">
+                </span>
+                <span class="chat_ib">
+                  <span class="fw-bold user_chat_name">Rachel Green </span>
+                  <span class="user_chat_date"></span>
+                  <br>
+                  <p class="user_chat_message"></p>
+                </span>
               </div>
-            </div>
-            <div class="chat_list">
+            </button>
+            <button class="chat_list" onclick="chatWith(this, 'Monica_Geller')" type="button">
               <div class="chat_people">
-                <div class="chat_ib">
-                  <h5>Monica Geller <span class="chat_date">Mar 25, 16:38</span></h5>
-                  <p>You only live once!</p>
-                </div>
+                <span class="chat_img">
+                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_02.jpg" alt="avatar.png">
+                </span>
+                <span class="chat_ib">
+                  <span class="fw-bold user_chat_name">Monica Geller</span>
+                  <span class="user_chat_date"></span>
+                  <br>
+                  <p class="user_chat_message"></p>
+                </span>
               </div>
-            </div>
-            <div class="chat_list">
+            </button>
+            <button class="chat_list" onclick="chatWith(this, 'Chandler_Bing')" type="button">
               <div class="chat_people">
-                <div class="chat_ib">
-                  <h5>Chandler Bing <span class="chat_date">Mar 24, 05:54</span></h5>
-                  <p>24/7</p>
-                </div>
+                <span class="chat_img">
+                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_02.jpg" alt="avatar.png">
+                </span>
+                <span class="chat_ib">
+                  <span class="fw-bold user_chat_name">Chandler Bing</span>
+                  <span class="user_chat_date"></span>
+                  <br>
+                  <p class="user_chat_message"></p>
+                </span>
               </div>
-            </div>
-            <div class="chat_list">
+            </button>
+            <button class="chat_list" onclick="chatWith(this,'Phobe Buffay')" type="button">
               <div class="chat_people">
-                <div class="chat_ib">
-                  <h5>Phobe Buffay <span class="chat_date">Mar 13, 17:26</span></h5>
-                  <p>bon apettite</p>
-                </div>
+                <span class="chat_img">
+                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_02.jpg" alt="avatar.png">
+                </span>
+                <span class="chat_ib">
+                  <span class="fw-bold user_chat_name">Phobe Buffay</span>
+                  <span class="user_chat_date"></span>
+                  <br>
+                  <p class="user_chat_message"></p>
+                </span>
               </div>
-            </div>
-            <div class="chat_list">
+            </button>
+            <button class="chat_list" onclick="chatWith(this,'Joey Tribbiany')" type="button">
               <div class="chat_people">
-                <div class="chat_ib">
-                  <h5>Joey Tribbiany <span class="chat_date">Feb 27, 18:53</span></h5>
-                  <p>A surprising message.</p>
-                </div>
+                <span class="chat_img">
+                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_02.jpg" alt="avatar.png">
+                </span>
+                <span class="chat_ib">
+                  <span class="fw-bold user_chat_name">Joey Tribbiany</span>
+                  <span class="user_chat_date"></span>
+                  <br>
+                  <p class="user_chat_message"></p>
+                </span>
               </div>
-            </div>
+            </button>
           </div>
         </div>
         <div class="mesgs">
-          <div class="msg_history">
+          <div class="msg_history" id="Ross_Geller">
             <div class="incoming_msg">
               <div class="received_msg">
                 <div class="received_withd_msg">
@@ -88,43 +117,106 @@
                 <span class="time_date"> 14:43 | April 7</span>
               </div>
             </div>
+          </div>
+          <div class="msg_history" id="Monica_Geller">
             <div class="incoming_msg">
               <div class="received_msg">
                 <div class="received_withd_msg">
-                  <p>Hola</p>
-                  <span class="time_date"> 18:34 | Yesterday</span>
+                  <p>check out</p>
+                  <span class="time_date"> 08:01 | April 6</span>
                 </div>
               </div>
             </div>
             <div class="outgoing_msg">
               <div class="sent_msg">
-                <p>It's been a while</p>
-                <span class="time_date"> 22:30 | Today</span>
-              </div>
-            </div>
-            <div class="incoming_msg">
-              <div class="received_msg">
-                <div class="received_withd_msg">
-                  <p>That's a first</p>
-                  <span class="time_date"> 11:01 AM | Today</span>
-                </div>
-              </div>
-            </div>
-            <div class="incoming_msg">
-              <div class="received_msg">
-                <div class="received_withd_msg">
-                  <p id="demo"></p>
-                  <span class="time_date">
-                    <p id=date></p>
-                  </span>
-                </div>
+                <p>What's up?</p>
+                <span class="time_date"> 14:43 | April 7</span>
               </div>
             </div>
           </div>
+          <div class="msg_history" id="Chandler_Bing">
+            <div class="incoming_msg">
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>check out</p>
+                  <span class="time_date"> 08:01 | April 6</span>
+                </div>
+              </div>
+            </div>
+            <div class="outgoing_msg">
+              <div class="sent_msg">
+                <p>What's up?</p>
+                <span class="time_date"> 14:43 | April 7</span>
+              </div>
+            </div>
+          </div>
+          <div class="msg_history" id="Rachel_Green">
+            <div class="incoming_msg">
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>check out</p>
+                  <span class="time_date"> 08:01 | April 6</span>
+                </div>
+              </div>
+            </div>
+            <div class="outgoing_msg">
+              <div class="sent_msg">
+                <p>What's up?</p>
+                <span class="time_date"> 14:43 | April 7</span>
+              </div>
+            </div>
+          </div>
+          <div class="msg_history" id="Joey_Tribbiany">
+            <div class="incoming_msg">
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>check out</p>
+                  <span class="time_date"> 08:01 | April 6</span>
+                </div>
+              </div>
+            </div>
+            <div class="outgoing_msg">
+              <div class="sent_msg">
+                <p>What's up?</p>
+                <span class="time_date"> 14:43 | April 7</span>
+              </div>
+            </div>
+          </div>
+          <div class="msg_history" id="Phobe_Buffay">
+            <div class="incoming_msg">
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>check out</p>
+                  <span class="time_date"> 08:01 | April 6</span>
+                </div>
+              </div>
+            </div>
+            <div class="outgoing_msg">
+              <div class="sent_msg">
+                <p>What's up?</p>
+                <span class="time_date"> 14:43 | April 7</span>
+              </div>
+            </div>
+          </div>
+          <div class="btn-group files_msg" id="file_msg">
+            <button class="btn btn-primary msg_file_btn" onclick="sendRecord()" type="button">
+              <i class="fa fa-fw fa-microphone"></i>
+            </button>
+            <button class="btn btn-primary msg_file_btn" onclick="sendVideo()" type="button">
+              <i class="fa fa-fw fa-video"></i>
+            </button>
+            <button class="btn btn-primary msg_file_btn" onclick="sendImage()" type="button">
+              <i class="fa fa-fw fa-image"></i>
+            </button>
+          </div>
           <div class="type_msg">
             <div class="input_msg_write">
-              <input type="text" class="write_msg" id="messageInput" placeholder="Type a message" />
-              <button class="msg_send_btn" onclick="sendIt()" id="sendBtn" type="button"> ->
+              <button class="add_file_btn" id="addfiles" onclick="addFiles()" type="button">
+                <i class="fa fa-fw fa-comment"></i>
+              </button>
+              <input type="text" class="write_msg" id="messageInput" placeholder="Type a message"/>
+              <button class="msg_send_btn" onclick="sendText()" type="button">
+                <i class="fa fa-fw fa-send"></i>
               </button>
             </div>
           </div>
@@ -136,29 +228,75 @@
 
 </html>
 <script lang="javascript">
-  var dt = new Date();
-  //document.getElementById('date-time').innerHTML = dt;
-  var month = dt.getUTCMonth() + 1; //months from 1-12
-  var day = dt.getUTCDate();
-  var year = dt.getUTCFullYear();
-  var hours = dt.getHours();
-  var minutes = dt.getMinutes();
-  var now = hours + ":" + minutes + " " + day + "/" + month + "/" + year;
-  document.getElementById('date-time').innerHTML = now;
-  var message = document.getElementById('sendBtn');
-  document.getElementById("demo").innerHTML = "hello world";
-  document.getElementById("date").innerHTML = now;
-  function sendIt() {
-    if (message.value == 0) {
-      return false;
+  var chat_user = 'Ross_Geller';
+  function getTime() {
+    var dt = new Date();
+    var month = dt.getUTCMonth() + 1; //months from 1-12
+    if(month < 10) {
+      month = "0" + month;
     }
-    else {
-      document.getElementById("nextMessage").innerHTML += message.value + "<br>" // += instead of =
-      document.getElementById("nextMessage").style.display = "block"
-
+    var day = dt.getUTCDate();
+    if(day < 10) {
+      day = "0" + day;
+    }
+    var year = dt.getUTCFullYear();
+    var hours = dt.getHours();
+    if(hours < 10) {
+      hours = "0" + hours;
+    }
+    var minutes = dt.getMinutes();
+    if(minutes < 10) {
+      minutes = "0" + minutes;
+    }
+    return hours + ":" + minutes + " " + day + "/" + month + "/" + year;
+  };
+  var message = document.getElementById('messageInput');
+  function sendText() {
+    if (message.value.trim().length == 0) {
+      return false;
+    } else {
+      const node = document.createElement("div");
+      node.className = "outgoing_msg";
+      const time = getTime();
+      node.innerHTML = '<div class="sent_msg"><p>' + message.value + '</p><span class="time_date">' + time + '</span></div>';
+      document.getElementById(chat_user).appendChild(node);
+      console.log(chat_user);
+      const activeChat = document.getElementById("active_chat");
+      const chatMsg = activeChat.getElementsByClassName("user_chat_message");
+      chatMsg[0].innerHTML = message.value;
+      const chatDate = activeChat.getElementsByClassName("user_chat_date");
+      chatDate[0].innerHTML = time;
+      node.scrollIntoView(true);
       message.value = "";
-
       document.getElementById("messageInput").style.height = "40px"
+
+    }
+  };
+  function addFiles() {
+    var add = document.getElementById("file_msg");
+    if(add.style.visibility == 'hidden') {
+      add.style.visibility = 'visible';
+    } else {
+      add.style.visibility = 'hidden';
+    }
+  }
+
+  function chatWith(element, userName) {
+    if(userName != chat_user) {
+      const old_active_chat = document.getElementById("active_chat");
+      old_active_chat.removeAttribute('id');
+      element.setAttribute('id', 'active_chat');
+      const parent = element.parentNode;
+      const node = parent.removeChild(element);
+      console.log(node);
+      console.log(parent);
+      console.log(parent.firstChild.nodeName);
+      child = parent.firstChild;
+      parent.insertBefore(node, child);
+      document.getElementById(userName).style.display = "block";
+      document.getElementById(chat_user).style.display = "none";
+      //child.style.display = "none";
+      chat_user = userName;
     }
   }
 </script>
