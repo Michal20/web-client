@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <title>Register Form</title>
+    <title>signin Form</title>
     <link href="signin.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/4f00ee1694.js" crossorigin="anonymous"></script>
-    <script defer src="./signin.js"></script>
+    <!--  <script defer src="./signin.js"></script>  -->
 </head>
+
 <body>
     <div class="container">
         <div class="box-register">
             <div class="box-title">
                 <h1 class="fw-bold">Sign In</h1>
             </div>
-            <form class="form d-flex flex-column" id="form">
+            <form class="form d-flex flex-column" id="form" action="chat.html">
                 <div class="form-control section-input">
                     <div class="d-flex align-items-center input-field my-3 mb-0">
                         <span class="far fa-user p-2"></span>
@@ -27,7 +29,7 @@
                     <small>Error message</small>
                 </div>
                 <div class="form-control section-input">
-                    <div class="d-flex align-items-center input-field mb-0"> 
+                    <div class="d-flex align-items-center input-field mb-0">
                         <span class="fas fa-lock p-2"></span>
                         <input type="password" class="form-control bg-light" id="pwd" placeholder="Enter password">
                         <i class="fas fa-check-circle"></i>
@@ -35,20 +37,21 @@
                     </div>
                     <small>Error message</small>
                 </div>
-                <div class="my-3"> 
+                <div class="my-3">
                     <button type="submit" class="form-control btn btn-primary fw-bold">Submit</button>
                 </div>
-                <div class="mb-3 have-account"> 
-                    <span class="text-light-white">Don't have an account yet?</span> 
-                    <a href="register.html">Sign Up</a> 
+                <div class="mb-3 have-account">
+                    <span class="text-light-white">Don't have an account yet?</span>
+                    <a href="register.html">Sign Up</a>
                 </div>
             </form>
         </div>
     </div>
 </body>
+
 </html>
 <script lang="javascript">
-    var list_of_users= {
+    var list_of_users = {
         "Ross": "Ross Geller",
         "Monica": "Monica Geller",
         "Chandler": "Chandler Bing",
@@ -56,43 +59,79 @@
         "Joey": "Joey Tribbiany",
         "Phobe": "Phobe Buffay"
     };
+    const form = document.getElementById('form');
+    form.onsubmit = (e) => {
+        e.preventDefault();
+        if (enterUser()) {
+            window.location.href = form.getAttribute("action")
+        };
+    };
     function enterUser() {
-        const userName = document.getElementById("user-name").value;
-        const password = document.getElementById("pwd").value;
-        if (typeof userName !== "string") {
+        var isvalid = true;
+        const userName = document.getElementById("user-name");
+        const password = document.getElementById("pwd");
+        const userNameValue = userName.value.trim();
+        const passwordValue = password.value.trim();
+        if (typeof userNameValue !== "string") {
             alert("Invalid Username input. We only process strings.");
-            return;
+            setError(userName, 'Username needs to be a string');
+            isvalid = false;
         }
-        if(userName == "" || userName == undefined) {
+        else if (userNameValue == "" || userName == undefined) {
             alert("Invalid input. Please enter username");
-            return
+            isvalid = false;
+            setError(userName, 'Please enter username');
         }
-        if(userName.length < 4) {
+        else if (userNameValue.length < 4) {
             alert("Invalid input. The username needs to contain at least four characters.");
-            return
+            setError(userName, 'Username needs to contain at least four characters.');
+            isvalid = false;
         }
-        if (typeof password !== "string") {
-            alert("Invalid password input. we only process strings.");
-            return;
-        }
-        if(password == "" || password == undefined) {
-            alert("Invalid input. Please enter password");
-            return
-        }
-        if(password.length < 8) {
-            alert("Invalid input. The password needs to contain at least eight character or longer.");
-            return
-        }
-        if(list_of_users[userName] == null) {
-            alert("Invalid input. Username does not exists")
-        }
-        if(list_of_users[userName] != password) {
-            alert("Invalid input. Password does not match username")
+        else if (list_of_users[userNameValue] == null) {
+            alert("Invalid input. Username does not exists");
+            setError(userName, 'Username does not exists');
+            isvalid = false;
         }
         else {
-            window.location.href = "chat.html";
-            alert("Hello " + userName + (" , welcome to Superchat"))
+            setSuccess(userName);
         }
+        if (typeof passwordValue !== "string") {
+            alert("Invalid password input. we only process strings.");
+            setError(password, 'Password needs to be a string.');
+            isvalid = false;
+        }
+        else if (passwordValue == "" || passwordValue == undefined) {
+            alert("Invalid input. Please enter password");
+            setError(password, 'Please enter password');
+            isvalid = false;
+        }
+        else if (passwordValue.length < 8) {
+            alert("Invalid input. The password needs to contain at least eight character.");
+            setError(password, 'Password needs to contain at least eight characters.');
+            isvalid = false;
+        }
+        else if (list_of_users[userNameValue] != passwordValue) {
+            alert("Invalid input. Password does not match username");
+            setError(password, 'Password does not match username');
+            isvalid = false;
+        }
+        else {
+            //window.location.href = "chat.html";
+            //isvalid = true;
+            alert("Hello " + userName + (" , welcome to Superchat"));
+            setSuccess(password);
+        }
+        return isvalid;
     }
-   
+    function setError(input, message) {
+        const sectioninput = input.parentElement.parentElement;
+        const small = sectioninput.querySelector('small');
+        small.innerText = message;
+        sectioninput.className = 'form-control section-input error';
+    }
+    function setSuccess(input) {
+        const sectioninput = input.parentElement.parentElement;
+        sectioninput.className = 'form-control section-input success';
+    }
+
 </script>
