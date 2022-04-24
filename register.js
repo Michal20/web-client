@@ -15,7 +15,6 @@ function validation() {
     const nickname = document.getElementById('nickname');
 
     const userNameValue = userName.value.trim();
-    console.log(userNameValue);
     const passwordValue = password.value.trim();
     const repeatPwdValue = repeatPwd.value.trim();
     const nicknameValue = nickname.value.trim();
