@@ -24,10 +24,10 @@ function validation() {
 
     }else if(typeof userNameValue != "string") {
         isvalid = false;
-        setError(userName, 'Username has to be a string');
+        setError(userName, 'We only process strings.');
     } else if (userNameValue.length < 4) {
         isvalid = false;
-        setError(userName,'Username must contain at least four characters');
+        setError(userName,'The username needs to contain at least four characters.');
     } else {
         setSuccess(userName);
     }
@@ -37,7 +37,7 @@ function validation() {
 
     }else if(typeof nicknameValue != "string") {
         isvalid = false;
-        setError(nickname, 'Nickname has to be a string');
+        setError(nickname, 'We only process strings.');
     } else if (nicknameValue.length < 4) {
         isvalid = false;
         setError(nickname,'Nickname must contain at least four characters');

@@ -1,11 +1,51 @@
-var list_of_users = {
+/*var list_of_users = {
     "Ross": "Ross Geller",
     "Monica": "Monica Geller",
     "Chandler": "Chandler Bing",
     "Rachel": "Rachel Green",
     "Joey": "Joey Tribbiany",
     "Phobe": "Phobe Buffay"
-};
+};*/
+var list_of_users = [
+    {
+      username: "Ross",
+      nickname: "Ross Geller",
+      Password: "Ross1234",
+      imageurl: "Ross.jpg",
+
+    },
+    {
+      username: "Monica", 
+      nickname: "Monica Geller",
+      Password: "Monica123",
+      imageurl: "Monica.jpg",
+    },
+    {
+      username: "Chandler", 
+      nickname: "Chandler Bing",
+      Password: "Chandler123",
+      imageurl: "Chandler.jpg",
+    },
+    {
+      username: "Rachel", 
+      nickname: "Rachel Green",
+      Password: "Rachel123",
+      imageurl: "Rachel.jpg",
+    },
+    {
+      username: "Joe", 
+      nickname: "Joey Tribbiany",
+      Password: "Joey1234",
+      imageurl: "Joe.jpg",
+    },
+    {
+      username: "Phobe", 
+      nickname: "Phobe Buffay",
+      Password: "Phobe123",
+      imageurl: "Phobe.jpg",
+    },
+]
+
 const form = document.getElementById('form');
 form.onsubmit = (e) => {
     e.preventDefault();
@@ -19,57 +59,46 @@ function enterUser() {
     const password = document.getElementById("pwd");
     const userNameValue = userName.value.trim();
     const passwordValue = password.value.trim();
-    if (typeof userNameValue !== "string") {
-        alert("Invalid Username input. We only process strings.");
-        setError(userName, 'Username needs to be a string');
-        isvalid = false;
-    }
-    else if (userNameValue == "" || userName == undefined) {
-        alert("Invalid input. Please enter username");
+    if(userNameValue == "" || userNameValue == undefined) {
         isvalid = false;
         setError(userName, 'Please enter username');
-    }
-    else if (userNameValue.length < 4) {
-        alert("Invalid input. The username needs to contain at least four characters.");
+
+    } else if (typeof userNameValue != "string") {
+        setError(userName, 'We only process strings.');
+        isvalid = false;
+    } else if (userNameValue.length < 4) {
         setError(userName, 'Username needs to contain at least four characters.');
         isvalid = false;
-    }
-    else if (list_of_users[userNameValue] == null) {
-        alert("Invalid input. Username does not exists");
+    } else if (list_of_users.find((element) => { element.username = userNameValue;}) == undefined) {
         setError(userName, 'Username does not exists');
         isvalid = false;
-    }
-    else {
+    } else {
         setSuccess(userName);
     }
     if (typeof passwordValue !== "string") {
-        alert("Invalid password input. we only process strings.");
-        setError(password, 'Password needs to be a string.');
+        setError(password, 'We only process strings.');
         isvalid = false;
-    }
-    else if (passwordValue == "" || passwordValue == undefined) {
-        alert("Invalid input. Please enter password");
+    } else if (passwordValue == "" || passwordValue == undefined) {
         setError(password, 'Please enter password');
         isvalid = false;
     }
     else if (passwordValue.length < 8) {
-        alert("Invalid input. The password needs to contain at least eight character.");
         setError(password, 'Password needs to contain at least eight characters.');
         isvalid = false;
     }
-    else if (list_of_users[userNameValue] != passwordValue) {
-        alert("Invalid input. Password does not match username");
+    else if (list_of_users.find((element) => { element.username = userNameValue;}).Password != passwordValue) {
         setError(password, 'Password does not match username');
         isvalid = false;
     }
     else {
         //window.location.href = "chat.html";
         //isvalid = true;
-        alert("Hello " + userName + (" , welcome to Superchat"));
+       // alert("Hello " + userName + (" , welcome to Superchat"));
         setSuccess(password);
     }
     return isvalid;
 }
+
 function setError(input, message) {
     const sectioninput = input.parentElement.parentElement;
     const small = sectioninput.querySelector('small');

@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
-  
 }
 html {
   scroll-behavior: smooth;
@@ -22,6 +21,13 @@ body{
 .container{ 
   margin: 5px auto;
   max-width:1170px;
+}
+.blur-filter {
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
 }
 img{ max-width:100%;}
 .recent {
@@ -91,12 +97,12 @@ img{ max-width:100%;}
 }
 .user_chat_name{
   float: left;
-  color:#c0b8ba;
+  color:#073333;
   font-size:18px;
   margin:0 0 8px 0;
 }
 .user_chat_date{
-  color:#d9ced0;
+  color:#a39597;
   font-size:14px;
   margin:0 0 8px 0;
   float:right;
@@ -188,7 +194,7 @@ img{ max-width:100%;}
   float: right;
   width: 56%;
 }
-.type_msg {border-top: 1px solid #4412a0;position: relative;}
+.type_msg {border-top: 1px solid #4412a0;position: relative; visibility: hidden}
 .input_msg_write input {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: none;
@@ -273,7 +279,6 @@ img{ max-width:100%;}
   background-image:  linear-gradient(0deg, #366687, #9b59b6);
   width: 130px;
   height: 130px;
-  /*text-indent: -100em;*/
   border-radius: 50%;
   border-width: 20px;
   border-color:  white;
@@ -316,38 +321,6 @@ img{ max-width:100%;}
   width: 25%; 
   border-right:5px solid rgba(239, 235, 235, 0.5);
 }
-/*.body-modal { 
-  position: absolute;
-  display: flex;
-  max-width:1170px;
-  text-align:center;
-  align-items:center;
-  justify-content:center;
-  width:10%;
-  height:10%;
-
-  background:rgb(135, 58, 58);
-  color: #5e13ea;
-  opacity:0;
-  transition:opacity 1.3s;
-}
-/*.body-modal {
-  
-  max-height:100px;
-  opacity:0.5;
-  transition:0.1s max-height 0.2s, 0.1s opacity 0.2s, ;
-  overflow:visible;
-}
-.inner-body-modal {
-  align-items:center;
-  justify-content:center;
-  background:#fff;
-  padding:25px;
-  border-radius: 8px;
-  position:relative;
-  z-index:1;
-  box-shadow:0px 0px 65px 0px rgba(0, 0, 0, 0.43);
-}*/
 .users_list {
   height: 400px;
   overflow-y: scroll;

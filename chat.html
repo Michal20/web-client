@@ -9,6 +9,7 @@
   <script src="https://kit.fontawesome.com/4f00ee1694.js" crossorigin="anonymous"></script>
   <link href="chat.css" rel="stylesheet">
   <script defer src="./chat.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -21,7 +22,7 @@
           <div class="headind_srch">
             <div class="recent_heading">
               <span class="fw-bold recent">Recent</span>
-              <button class="btn btn-primary add_chat_user" onclick="addChatUser()" type="button">
+              <button class="btn btn-primary add_chat_user" id="add_chat_user" onclick="addChatUser()" type="button">
                 <i class="fa fa-fw fa-user-plus"></i>
               </button>
             </div>
@@ -62,29 +63,29 @@
             </div>
           </!--div-->
           <span class="btn-group files_msg" id="file_msg">
-            <button class="btn btn-primary msg_file_btn" onclick="sendRecord()" type="button">
+            <button class="btn btn-primary msg_file_btn" id="record-input" onclick="sendRecord()" type="button">
               <i class="fa fa-fw fa-microphone"></i>
             </button>
             <span class="video-upload btn btn-primary msg_file_btn">
               <label for="video-input">
                 <i class="fa fa-fw fa-video"></i>
               </label>
-              <input type="file" id="video-input" accept="video/*" onchange="sendVideo(event)">  
+              <input type="file" id="video-input" accept="video/*" onchange="sendVideo(event)" onclick="this.value=null;">  
             </span>
             <span class="image-upload btn btn-primary msg_file_btn">
               <label for="image-input">
                 <i class="fa fa-fw fa-image"></i>
               </label>
-              <input type="file" id="image-input" accept="image/png, image/jpeg" onchange="sendImage(event)">  
+              <input type="file" id="image-input" accept="image/png, image/jpeg" onchange="sendImage(event)" onclick="this.value=null;">  
             </span>
           </span>
           <div class="type_msg">
             <div class="input_msg_write">
               <button class="add_file_btn" id="addfiles" onclick="addFiles()" type="button">
-                <i class="fa fa-fw fa-add"></i>
+                <i class="fa fa-fw fa-paperclip"></i>
               </button>
               <input type="text" class="write_msg" id="messageInput" placeholder="Type a message"/>
-              <button class="msg_send_btn" onclick="sendText()" type="button">
+              <button class="msg_send_btn" id="msg_send_btn" onclick="sendText()" type="button">
                 <i class="fa fa-fw fa-send"></i>
               </button>
             </div>
@@ -109,218 +110,6 @@
     <div class="users_list" id="users_list">
     </div>
   </div>
-  
 </body>
 
 </html>
-<script lang="javascript">
-  var list_of_users = [
-    {
-      username: "Ross",
-      nickname: "Ross Geller",
-      Password: "Ross1234",
-      imageurl: "avatar.png",
-
-    },
-    {
-      username: "Monica", 
-      nickname: "Monica Geller",
-      Password: "Monica123",
-      imageurl: "avatar.png",
-    },
-    {
-      username: "Chandler", 
-      nickname: "Chandler Bing",
-      Password: "Chandler123",
-      imageurl: "avatar.png",
-    },
-    {
-      username: "Rachel", 
-      nickname: "Rachel Green",
-      Password: "Rachel123",
-      imageurl: "Rachel.jpg",
-    },
-    {
-      username: "Joe", 
-      nickname: "Joey Tribbiany",
-      Password: "Joey1234",
-      imageurl: "Joe.jpg",
-    },
-    {
-      username: "Phobe", 
-      nickname: "Phobe Buffay",
-      Password: "Phobe123",
-      imageurl: "avatar.png",
-    },
-  ]
-  var active_chat_user = '';
-  list_of_users.forEach((element) => {
-    const node = document.createElement("button");
-    node.className = "user_add_list";
-    node.innerHTML = '<div class="chat_people"><span class="chat_img"> <img src = '+ element.imageurl
-      +' alt="avatar.png"> </span><span class="chat_ib"> <span class="fw-bold user_chat_name">' + element.nickname
-        + '</span></span></div>';
-    document.getElementById('users_list').appendChild(node);
-    node.onclick = function() {
-      addUser(node, element);
-    }
-    node.setAttribute("type", "button");
-  })
-  function addUser(element, user) {
-    const node = document.createElement("button");
-    const old_active_chat = document.getElementById("active_chat");
-    const old_active_user = document.getElementById(active_chat_user);
-  
-    if(typeof(old_active_chat) != 'undefined' && old_active_chat != null){
-      old_active_chat.removeAttribute('id');
-    }
-    if(typeof(old_active_user) != 'undefined' && old_active_user != null){
-      old_active_user.style.display = "none";
-    }
-    node.setAttribute('id', 'active_chat');
-    node.className = "chat_list";
-    node.innerHTML = '<div class="chat_people"><span class="chat_img"> <img src = '+ user.imageurl
-      +' alt="avatar.png"> </span><span class="chat_ib"> <span class="fw-bold user_chat_name">' + user.nickname
-        + '</span><span class="user_chat_date"></span><br><p class="user_chat_message"></p></span></div>';
-    document.getElementById('inbox_chat').appendChild(node);
-    node.setAttribute("type", "button"); 
-    const parent = element.parentNode;
-    parent.removeChild(element);
-    document.getElementById('box-add').style.visibility = 'hidden';
-    addChatMsg(user);
-    node.onclick = function() {
-      chatWith(node, user.username);
-    }
-    active_chat_user = user.username;
-  }
-  function addChatMsg(user) {
-    const node = document.createElement("div");
-    const attribute = document.createAttribute('id');
-    attribute.value = user.username;
-    node.setAttributeNode(attribute);
-    node.innerHTML = '<div class="incoming_msg"><div class="received_msg"></div></div><div class="outgoing_msg"></div>';
-    node.className = "msg_history";
-    console.log(node);
-    node.style.display  = 'block';
-    document.getElementById('msg_history').appendChild(node);
-  }
-
-  function getTime() {
-    var dt = new Date();
-    var month = dt.getUTCMonth() + 1; //months from 1-12
-    if(month < 10) {
-      month = "0" + month;
-    }
-    var day = dt.getUTCDate();
-    if(day < 10) {
-      day = "0" + day;
-    }
-    var year = dt.getUTCFullYear();
-    var hours = dt.getHours();
-    if(hours < 10) {
-      hours = "0" + hours;
-    }
-    var minutes = dt.getMinutes();
-    if(minutes < 10) {
-      minutes = "0" + minutes;
-    }
-    return hours + ":" + minutes + " " + day + "/" + month + "/" + year;
-  };
-  var message = document.getElementById('messageInput');
-  function sendText() {
-    if (message.value.trim().length == 0) {
-      return false;
-    } else {
-      const node = document.createElement("div");
-      node.className = "outgoing_msg";
-      const time = getTime();
-      node.innerHTML = '<div class="sent_msg"><p>' + message.value + '</p><span class="time_date">' + time + '</span></div>';
-      document.getElementById(active_chat_user).appendChild(node);
-      const activeChat = document.getElementById("active_chat");
-      const chatMsg = activeChat.getElementsByClassName("user_chat_message");
-      chatMsg[0].innerHTML = message.value;
-      const chatDate = activeChat.getElementsByClassName("user_chat_date");
-      chatDate[0].innerHTML = time;
-      node.scrollIntoView(true);
-      message.value = "";
-      document.getElementById("messageInput").style.height = "40px"
-
-    }
-  };
-  function addFiles() {
-    var add = document.getElementById("file_msg");
-    if(add.style.visibility == 'hidden') {
-      add.style.visibility = 'visible';
-
-    } else {
-      add.style.visibility = 'hidden';
-    }
-  }
-
-  function chatWith(element, userName) {
-    const old_active_chat = document.getElementById("active_chat");
-    const old_active_user = document.getElementById(active_chat_user);
-  
-    if(typeof(old_active_chat) != 'undefined' && old_active_chat != null){
-      old_active_chat.removeAttribute('id');
-    }
-    if(typeof(old_active_user) != 'undefined' && old_active_user != null){
-      old_active_user.style.display = "none";
-    }
-    element.setAttribute('id', 'active_chat');
-    const parent = element.parentNode;
-    const node = parent.removeChild(element);
-    child = parent.firstChild;
-    parent.insertBefore(node, child);
-    document.getElementById(userName).style.display = "block";
-    active_chat_user = userName;
-  }
-  function addChatUser() {
-    const boxAdd = document.getElementById('box-add');
-    if(boxAdd.style.visibility == 'visible') {
-      boxAdd.style.visibility = 'hidden';
-    } else {
-      boxAdd.style.visibility = 'visible';
-    }
-    
-  }
-  var sendImage = function(event) {
-    const imageUrl = URL.createObjectURL(event.target.files[0]);
-    const node = document.createElement("div");
-    node.className = "outgoing_msg";
-    const time = getTime();
-    node.innerHTML = '<div class="sent_msg"><img src='+imageUrl+'>' + '<span class="time_date">' + time + '</span></div>';
-    document.getElementById(active_chat_user ).appendChild(node);
-    const activeChat = document.getElementById("active_chat");
-    const chatMsg = activeChat.getElementsByClassName("user_chat_message");
-    chatMsg[0].innerHTML = "Image";
-    const chatDate = activeChat.getElementsByClassName("user_chat_date");
-    chatDate[0].innerHTML = time;
-    message.value = "";
-    node.scrollIntoView();
-  }
-  var sendVideo = function(event) {
-    const videoUrl = URL.createObjectURL(event.target.files[0]);
-    const node = document.createElement("div");
-    node.className = "outgoing_msg";
-    const time = getTime();
-    node.innerHTML = '<div class="sent_msg"><video controls><source src='+videoUrl+'>' + '</video><span class="time_date">' + time + '</span></div>';
-    document.getElementById(active_chat_user).appendChild(node);
-    const activeChat = document.getElementById("active_chat");
-    const chatMsg = activeChat.getElementsByClassName("user_chat_message");
-    chatMsg[0].innerHTML = "Video";
-    const chatDate = activeChat.getElementsByClassName("user_chat_date");
-    chatDate[0].innerHTML = time;
-    message.value = "";
-    node.scrollIntoView();
-  }
-  function sendRecord() {
-    const box = document.getElementById('record');
-    box.style.visibility = 'visible';
-  }
-  function getAudio() {
-
-  }
- 
- 
-</script>
