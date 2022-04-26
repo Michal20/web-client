@@ -25,15 +25,15 @@ var list_of_users = [
       imageurl: "Rachel.jpg",
     },
     {
-      username: "Joe", 
+      username: "Joey", 
       nickname: "Joey Tribbiany",
       Password: "Joey1234",
       imageurl: "Joe.jpg",
     },
     {
-      username: "Phobe", 
-      nickname: "Phobe Buffay",
-      Password: "Phobe123",
+      username: "Pheobe", 
+      nickname: "Pheobe Buffay",
+      Password: "Pheobe123",
       imageurl: "Phobe.jpg",
     },
 ]

@@ -4,48 +4,68 @@
     "Chandler": "Chandler Bing",
     "Rachel": "Rachel Green",
     "Joey": "Joey Tribbiany",
-    "Phobe": "Phobe Buffay"
+    "Phoebe": "Phoebe Buffay"
 };*/
 var list_of_users = [
     {
-      username: "Ross",
-      nickname: "Ross Geller",
-      Password: "Ross1234",
-      imageurl: "Ross.jpg",
+        username: "Ross",
+        nickname: "Ross Geller",
+        Password: "Ross1234",
+        imageurl: "Ross.jpg",
 
     },
     {
-      username: "Monica", 
-      nickname: "Monica Geller",
-      Password: "Monica123",
-      imageurl: "Monica.jpg",
+        username: "Monica",
+        nickname: "Monica Geller",
+        Password: "Monica123",
+        imageurl: "Monica.jpg",
     },
     {
-      username: "Chandler", 
-      nickname: "Chandler Bing",
-      Password: "Chandler123",
-      imageurl: "Chandler.jpg",
+        username: "Chandler",
+        nickname: "Chandler Bing",
+        Password: "Chandler123",
+        imageurl: "Chandler.jpg",
     },
     {
-      username: "Rachel", 
-      nickname: "Rachel Green",
-      Password: "Rachel123",
-      imageurl: "Rachel.jpg",
+        username: "Rachel",
+        nickname: "Rachel Green",
+        Password: "Rachel123",
+        imageurl: "Rachel.jpg",
     },
     {
-      username: "Joe", 
-      nickname: "Joey Tribbiany",
-      Password: "Joey1234",
-      imageurl: "Joe.jpg",
+        username: "Joey",
+        nickname: "Joey Tribbiany",
+        Password: "Joey1234",
+        imageurl: "Joe.jpg",
     },
     {
-      username: "Phobe", 
-      nickname: "Phobe Buffay",
-      Password: "Phobe123",
-      imageurl: "Phobe.jpg",
+        username: "Phoebe",
+        nickname: "Phoebe Buffay",
+        Password: "Phobe123",
+        imageurl: "Phobe.jpg",
     },
 ]
-
+function userExsits(username) {
+    for (i = 0; i < list_of_users.length; i++) {
+        if (list_of_users[i].username == username) {
+            return true;
+        }
+    }
+    return false;
+}
+function userMatchesPassword(username, password) {
+    for (i = 0; i < list_of_users.length; i++) {
+        if (list_of_users[i].username == username) {
+            if (list_of_users[i].Password == password) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    return false;
+}
 const form = document.getElementById('form');
 form.onsubmit = (e) => {
     e.preventDefault();
@@ -59,7 +79,7 @@ function enterUser() {
     const password = document.getElementById("pwd");
     const userNameValue = userName.value.trim();
     const passwordValue = password.value.trim();
-    if(userNameValue == "" || userNameValue == undefined) {
+    if (userNameValue == "" || userNameValue == undefined) {
         isvalid = false;
         setError(userName, 'Please enter username');
 
@@ -69,9 +89,12 @@ function enterUser() {
     } else if (userNameValue.length < 4) {
         setError(userName, 'Username needs to contain at least four characters.');
         isvalid = false;
-    } else if (list_of_users.find((element) => { element.username = userNameValue;}) == undefined) {
+    } else if (!userExsits(userNameValue)) {
         setError(userName, 'Username does not exists');
         isvalid = false;
+        //} else if (list_of_users.find((element) => { element.username == userNameValue; }) == undefined) {
+        //  setError(userName, 'Username does not exists');
+        //isvalid = false;
     } else {
         setSuccess(userName);
     }
@@ -86,14 +109,17 @@ function enterUser() {
         setError(password, 'Password needs to contain at least eight characters.');
         isvalid = false;
     }
-    else if (list_of_users.find((element) => { element.username = userNameValue;}).Password != passwordValue) {
+    else if (!userMatchesPassword(userNameValue, passwordValue)) {
         setError(password, 'Password does not match username');
         isvalid = false;
+        //else if (list_of_users.find((element) => { element.username = userNameValue; }).Password != passwordValue) {
+        //  setError(password, 'Password does not match username');
+        //isvalid = false;
     }
     else {
         //window.location.href = "chat.html";
         //isvalid = true;
-       // alert("Hello " + userName + (" , welcome to Superchat"));
+        // alert("Hello " + userName + (" , welcome to Superchat"));
         setSuccess(password);
     }
     return isvalid;
