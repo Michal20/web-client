@@ -66,17 +66,24 @@
             <button class="btn btn-primary msg_file_btn" id="record-input" onclick="sendRecord()" type="button">
               <i class="fa fa-fw fa-microphone"></i>
             </button>
+            <span class="audio-upload btn btn-primary msg_file_btn">
+              <label for="audio-input">
+                <i class="fa fa-fw fa-microphone"></i>
+              </label>
+              <input type="file" id="record-input" accept="audio/*" onchange="sendRecord(event)"
+                onclick="this.value=null;">
+            </span>
             <span class="video-upload btn btn-primary msg_file_btn">
               <label for="video-input">
                 <i class="fa fa-fw fa-video"></i>
               </label>
-              <input type="file" id="video-input" accept="video/*" onchange="sendVideo(event)" onclick="this.value=null;">  
+              <input type="file" id="video-input" accept="video/*" onchange="sendVideo(event)" onclick="this.value=null;">
             </span>
             <span class="image-upload btn btn-primary msg_file_btn">
               <label for="image-input">
                 <i class="fa fa-fw fa-image"></i>
               </label>
-              <input type="file" id="image-input" accept="image/png, image/jpeg" onchange="sendImage(event)" onclick="this.value=null;">  
+              <input type="file" id="image-input" accept="image/png, image/jpeg" onchange="sendImage(event)" onclick="this.value=null;">
             </span>
           </span>
           <div class="type_msg">
