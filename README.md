@@ -1,8 +1,8 @@
 # web-client
 Open one of the three file:
-1.register.html
-2.signin.html
-3.chat.html
+1. register.html
+2. signin.html
+3. chat.html
 In register.html you will be asked to register as a new user and than will be moved to the chat screen,
 however if you already have a user you can move to signin.html.
 In signin.html you will be asked to sign in, there are 6 users you can already sign in with:
